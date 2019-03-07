@@ -36,5 +36,9 @@
   "keywords": [
     "vue",
     "lazyload"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitliyu/vue-lazyload-widget.git"
+  }
 }
