@@ -14,7 +14,7 @@ Vue.use(vueLazyloadWidget)
 ```
 ### 图片懒加载
 ```apple js
-<img v-lazy-img="'/src/assets/loginbg.jpg'">
+<img v-lazy-img="imgUrl">
 ```
 ### 模块懒加载
 > in progress
