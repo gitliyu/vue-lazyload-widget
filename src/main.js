@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import vueLazyloadWidget from '../dist/vue-lazyload-widget';
+import vueLazyloadWidget from './index';
 
 Vue.use(vueLazyloadWidget);
 

@@ -14,8 +14,12 @@ Vue.use(vueLazyloadWidget)
 ```
 ### 图片懒加载
 ```apple js
-<img v-lazy-img="imgUrl">
+<img v-lazy-img="path">
+// or
+<img dat-src="path" v-lazy-img> 
 ```
+> 图片路径需要设置绝对路径
+
 ### 模块懒加载
 > in progress
 
@@ -30,10 +34,14 @@ Vue.use(vueLazyloadWidget)
 const options  = {};
 Vue.use(vueLazyloadWidget, options)
 ```
-- 修改全局配置，配置项是优先读取`Vue`原型上的配置项(暂未生效)
+- 组件中修改配置项，会优先读取组件中的`lazyOptions`属性
 ```javascript
-const options  = {};
-Vue.prototype.lazyOptions = options;
+data () {
+  lazyOptions: {
+    root: null,
+    rootMargin: '0px'
+  }
+}
 ```
 - 组件注册时传入(暂未生效)
 

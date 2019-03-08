@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div style="height: 1000px;"></div>
-    <img src=""  v-lazy-img="'/src/assets/loginbg.jpg'">
+    <img src="" data-src="/src/assets/loginbg.jpg"  v-lazy-img>
   </div>
 </template>
 
@@ -10,6 +10,9 @@ export default {
   name: 'app',
   data () {
     return {}
+  },
+  mounted () {
+
   }
 }
 </script>
