@@ -1,13 +1,17 @@
 import {defaultOptions} from './config';
 import {merge, isLazyImage, isEmptyObject} from './util';
 import registerDirective from './directive';
+import LazyWidget from '../../components/LazyloadWidget.vue';
 
 export default (Vue, options = []) => {
   // 注册 IntersectionObserver
   const io = registerIo(options);
+  window.lazyOptions = options;
   // 注册v-lazy指令
   registerDirective(Vue, io);
-
+  // 注册组件
+  Vue.components(LazyWidget);
+  // 混入监听options
   Vue.mixin({
     data () {
       return {
