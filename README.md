@@ -2,8 +2,9 @@
 
 基于浏览器['IntersectionObserver'](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)接口，实现的`Vue`懒加载组件，初步计划是有实现图片懒加载以及模块的懒加载两种内容，分别以指令和组件的形式来使用
 
-安装
-```javascript
+### 安装
+使用npm
+```
 npm i vue-lazyload-widget
 ```
 在`main.js`中引入
@@ -12,16 +13,36 @@ import vueLazyloadWidget from 'vue-lazyload-widget'
 
 Vue.use(vueLazyloadWidget)
 ```
+直接引入文件
+```
+<script src="path/vue-lazyload-widget.js"></script> 
+```
+
 ### 图片懒加载
-```apple js
+设置图片路径时有两种可用方式，直接将路径设置为指令属性值或者设置为`data-src`属性
+```
 <img v-lazy-img="path">
 // or
 <img dat-src="path" v-lazy-img> 
 ```
 > 图片路径需要设置绝对路径
 
-### 模块懒加载
-> in progress
+### 组件懒加载
+```
+<lazy-widget>
+  <!--组件内容-->
+  <div slot="skeleton"><!--预加载内容，比如骨架--></div>
+</lazy-widget>
+```
+
+### 组件Event
+接受唯一参数`el`,为当前组件dom实例
+- `before-leave`: 预加载内容即将离开
+- `after-leave`: 预加载内容已离开
+- `before-enter`: 组件内容即将进入
+- `after-enter`: 组件内容已进入
+- `before-init`: 组件内容即将被渲染
+- `after-enter`: 组件内容已渲染完成
 
 ### 关于配置项
 目前包括以下配置项
@@ -43,7 +64,10 @@ data () {
   }
 }
 ```
-- 组件注册时传入(暂未生效)
+- 组件注册时传入,如果父组件内有定义，会直接读取父级配置，只有需要单独对组件进行配置时需要传入
+```
+<lazy-widget :options="lazyOptions"></lazy-widget>
+```
 
 ### 兼容性
 由于主要依赖于['IntersectionObserver'](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)接口，目前只适用于部分高版本浏览器，如果要兼容低版本，需要额外安装['IntersectionObserver Polyfill'](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)

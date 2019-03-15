@@ -10,7 +10,7 @@ export default (Vue, options = []) => {
   // 注册v-lazy指令
   registerDirective(Vue, io);
   // 注册组件
-  Vue.components(LazyWidget);
+  Vue.component(LazyWidget.name, LazyWidget);
   // 混入监听options
   Vue.mixin({
     data () {
