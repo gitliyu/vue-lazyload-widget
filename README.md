@@ -66,8 +66,9 @@ data () {
 ```
 - 组件注册时传入,如果父组件内有定义，会直接读取父级配置，只有需要单独对组件进行配置时需要传入
 ```
-<lazy-widget :options="lazyOptions"></lazy-widget>
+<lazy-widget :options="lazyOptions" :height="100"></lazy-widget>
 ```
+> 组件上的`height`属性表示组件内容未加载时的高度，默认为50px
 
 ### 兼容性
 由于主要依赖于['IntersectionObserver'](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)接口，目前只适用于部分高版本浏览器，如果要兼容低版本，需要额外安装['IntersectionObserver Polyfill'](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)

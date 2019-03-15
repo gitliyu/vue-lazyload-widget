@@ -1,5 +1,5 @@
 <template>
-  <transition-group name="lazy-widget" tag="div" class="lazy-widget"
+  <transition-group name="lazy-widget" class="lazy-widget" :style="style"
     @before-enter="emitEvent('before-enter')"
     @before-leave="emitEvent('before-leave')"
     @after-enter="emitEvent('after-enter')"
@@ -12,7 +12,7 @@
       <slot name="skeleton"></slot>
     </div>
     <div v-else key="loading">
-      <img :src="defaultImg">
+      <img :src="defaultImg" class="loading-img">
     </div>
   </transition-group>
 </template>
@@ -25,18 +25,26 @@
     name: 'lazy-widget',
     data () {
       return {
+        defaultImg,
         visible: false,
         io: null,
-        defaultImg
+        style: ''
       }
     },
     props: {
+      height: {
+        type: [String, Number],
+        default: '50px'
+      },
       options: {
         type: Object,
         default: () => {
           return defaultOptions;
         }
       }
+    },
+    created () {
+      this.initComponentStyle();
     },
     mounted () {
       this.initObserver();
@@ -80,12 +88,30 @@
       * */
       emitEvent (event, target) {
         this.$emit(event, target || this.$el)
+      },
+      /*
+      * 初始化组件样式
+      * */
+      initComponentStyle () {
+        let style = [];
+        let height = typeof this.height === 'number' ? this.height + 'px' : this.height;
+        style.push(`min-height: ${height}`);
+        this.style = style.join(';');
       }
     }
   }
 </script>
 
 <style lang="scss">
+  .lazy-widget {
+    position: relative;
+    .loading-img{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
   .lazy-widget-enter-active {
     transition: opacity .5s;
   }

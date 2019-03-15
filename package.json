@@ -1,7 +1,7 @@
 {
   "name": "vue-lazyload-widget",
   "description": "A Vue.js project",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "liyu <liyu@shinetechchina.com>",
   "license": "MIT",
   "private": false,
