@@ -1,5 +1,5 @@
 <template>
-  <transition-group name="lazy-widget" class="lazy-widget" :style="style"
+  <transition-group name="lazy-widget" class="lazy-widget" :style="style" tag="div"
     @before-enter="emitEvent('before-enter')"
     @before-leave="emitEvent('before-leave')"
     @after-enter="emitEvent('after-enter')"
