@@ -1,5 +1,5 @@
 <template>
-  <transition-group name="lazy-widget" class="lazy-widget" :style="style" tag="div"
+  <transition-group :name="name" class="lazy-widget" :style="style" tag="div"
     @before-enter="emitEvent('before-enter')"
     @before-leave="emitEvent('before-leave')"
     @after-enter="emitEvent('after-enter')"
@@ -32,16 +32,29 @@
       }
     },
     props: {
-      height: {
-        type: [String, Number],
-        default: '50px'
-      },
+      /*
+      * 配置项
+      * */
       options: {
         type: Object,
         default: () => {
           return defaultOptions;
         }
-      }
+      },
+      /*
+      * transition name
+      * */
+      name: {
+        type: String,
+        default: 'lazy-widget'
+      },
+      /*
+      * 组件默认高度
+      * */
+      height: {
+        type: [String, Number],
+        default: '50px'
+      },
     },
     created () {
       this.initComponentStyle();
@@ -95,7 +108,7 @@
       initComponentStyle () {
         let style = [];
         let height = typeof this.height === 'number' ? this.height + 'px' : this.height;
-        style.push(`min-height: ${height}`);
+        style.push(`height: ${height}`);
         this.style = style.join(';');
       }
     }
@@ -105,6 +118,9 @@
 <style lang="scss">
   .lazy-widget {
     position: relative;
+    >div{
+      height: 100%;
+    }
     .loading-img{
       position: absolute;
       left: 50%;
