@@ -9,7 +9,7 @@ Demo源码示例： ['组件'](https://github.com/gitliyu/vue-lazyload-widget/bl
 ### 安装
 使用npm
 ```
-npm i vue-lazyload-widget
+npm install vue-lazyload-widget
 ```
 在`main.js`中引入
 ```javascript
@@ -18,13 +18,13 @@ import vueLazyloadWidget from 'vue-lazyload-widget'
 Vue.use(vueLazyloadWidget)
 ```
 直接引入文件
-```
+```html
 <script src="path/vue-lazyload-widget.js"></script> 
 ```
 
 ### 图片懒加载
 设置图片路径时有两种可用方式，直接将路径设置为指令属性值或者设置为`data-src`属性
-```
+```html
 <img v-lazy-img="path">
 // or
 <img dat-src="path" v-lazy-img> 
@@ -32,7 +32,7 @@ Vue.use(vueLazyloadWidget)
 > 图片路径需要设置绝对路径，或者提前引入图片，参考['Demo'](https://github.com/gitliyu/vue-lazyload-widget/blob/master/demo/Directive.vue)
 
 ### 组件懒加载
-```
+```html
 <lazy-widget>
   <!--组件内容-->
   <div slot="skeleton"><!--预加载内容，比如骨架--></div>
@@ -69,7 +69,7 @@ data () {
 }
 ```
 - 组件注册时传入,如果父组件内有定义，会直接读取父级配置，只有需要单独对组件进行配置时需要传入
-```
+```html
 <lazy-widget :options="lazyOptions" :height="100"></lazy-widget>
 ```
 组件上额外的配置
@@ -94,11 +94,11 @@ data () {
 npm install intersection-observer
 ```
 之后在文件内引入即可
-```
+```javascript
 require('intersection-observer');
 ```
 or
-```
+```html
 <script src="path/intersection-observer.js"></script>
 ```
 > 注意`intersection-observer`的引用要在本组件之前
