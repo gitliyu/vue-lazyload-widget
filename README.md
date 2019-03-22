@@ -2,6 +2,10 @@
 
 基于浏览器['IntersectionObserver'](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)接口，实现的`Vue`懒加载组件，初步计划是有实现图片懒加载以及模块的懒加载两种内容，分别以指令和组件的形式来使用
 
+Demo: ['https://liyu.fun/demo/vue-lazyload-widget'](https://liyu.fun/demo/vue-lazyload-widget)
+
+Demo源码示例： ['组件'](https://github.com/gitliyu/vue-lazyload-widget/blob/master/demo/Component.vue) ['图片'](https://github.com/gitliyu/vue-lazyload-widget/blob/master/demo/Directive.vue)
+
 ### 安装
 使用npm
 ```
@@ -25,7 +29,7 @@ Vue.use(vueLazyloadWidget)
 // or
 <img dat-src="path" v-lazy-img> 
 ```
-> 图片路径需要设置绝对路径
+> 图片路径需要设置绝对路径，或者提前引入图片，参考['Demo'](https://github.com/gitliyu/vue-lazyload-widget/blob/master/demo/Directive.vue)
 
 ### 组件懒加载
 ```
@@ -34,7 +38,7 @@ Vue.use(vueLazyloadWidget)
   <div slot="skeleton"><!--预加载内容，比如骨架--></div>
 </lazy-widget>
 ```
-
+没有设置骨架时，组件未加载之前默认显示loading图片
 ### 组件Event
 接受唯一参数`el`,为当前组件dom实例
 - `before-leave`: 预加载内容即将离开
@@ -89,6 +93,17 @@ data () {
 ```
 npm install intersection-observer
 ```
+之后在文件内引入即可
+```
+require('intersection-observer');
+```
+or
+```
+<script src="path/intersection-observer.js"></script>
+```
+> 注意`intersection-observer`的引用要在本组件之前
+
 ### 参考
+- ['IntersectionObserver'](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)
 - ['hilongjw/vue-lazyload'](https://github.com/hilongjw/vue-lazyload)
 - ['xunleif2e/vue-lazy-component'](https://github.com/xunleif2e/vue-lazy-component)
