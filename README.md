@@ -68,7 +68,21 @@ data () {
 ```
 <lazy-widget :options="lazyOptions" :height="100"></lazy-widget>
 ```
-> 组件上的`height`属性表示组件内容未加载时的高度，默认为50px
+组件上额外的配置
+- `height`: 表示组件内容未加载时的高度，默认为`50px`
+- `name`: 组件中`transition`过度组件的name，用于设置过渡动画，默认为`lazy-widget`
+
+### 过渡动画
+默认的过渡动画效果为
+```css
+.lazy-widget-enter-active {
+  transition: opacity .5s;
+}
+.lazy-widget-enter{
+  opacity: 0;
+}
+```
+可以通过自定义样式和`name`来修改过渡动画
 
 ### 兼容性
 由于主要依赖于['IntersectionObserver'](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)接口，目前只适用于部分高版本浏览器，如果要兼容低版本，需要额外安装['IntersectionObserver Polyfill'](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
